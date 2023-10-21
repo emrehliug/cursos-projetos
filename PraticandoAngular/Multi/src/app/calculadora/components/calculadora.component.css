@@ -1,0 +1,31 @@
+.kz-btn {
+  width: 90%;
+  margin: 4px;
+}
+.kz-input-text {
+  margin-top: 3px;
+  width:96%;
+  margin-left:6px
+}
+.kz-pad-20 {
+padding: 20px;
+}
+.col-xs-3, .col-xs-9 {
+padding: 0px;
+}
+.container{
+  margin-left: 105%;
+  margin-top: 25%;
+  align-items: center;
+  justify-content: center;
+}
+.title{
+  margin-top: 3px;
+  font-size: large;
+  font-style: italic;
+}
+
+
+
+
+
