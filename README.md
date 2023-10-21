@@ -1,4 +1,4 @@
-# Uma LojaVirtual com ASP.NET Core 2.2
+# Automações com Selenium/HtmlAgilitypack
 
 ## Descrição:
-Esse projeto trata-se de um curso da udemy onde aprendi sobre o ASP.NET Core e algumas de suas features.
+Esse projeto tem objetivo a criação de bots com Selenium para WebCrawler de determinados sites. 
