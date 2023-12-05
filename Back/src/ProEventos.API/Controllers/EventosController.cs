@@ -147,9 +147,14 @@ namespace ProEventos.API.Controllers
                 if (evento == null) return NoContent();
 
                 if (await eventoService.DeleteEvento(id))
+                {
+                    DeletaImagem(evento.ImagemURL);
                     return Ok(new { message = "Deletado" });
+                }
                 else
+                {
                     throw new Exception("Evento não deletado");
+                }
             }
             catch (Exception ex)
             {

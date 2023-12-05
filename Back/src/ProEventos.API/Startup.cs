@@ -14,6 +14,7 @@ using ProEventos.Persistence.Interfaces;
 using System;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using System.Text.Json.Serialization;
 
 namespace ProEventos.API
 {
@@ -31,7 +32,8 @@ namespace ProEventos.API
         {
             services.AddDbContext<ProEventosContext>(context => context.UseSqlServer(Configuration.GetConnectionString("SQLServer")));
             services.AddControllers()
-                    .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
+                    .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()))
+                    .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling =
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore
                     );
 
@@ -39,10 +41,13 @@ namespace ProEventos.API
 
             services.AddScoped<IEventoService, EventoService>();
             services.AddScoped<ILoteService, LoteService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ITokenService, TokenService>();
 
             services.AddScoped<IGeralPersist, GeralPersist>();
             services.AddScoped<IEventoPersist, EventoPersist>();
             services.AddScoped<ILotePersist, LotePersist>();
+            services.AddScoped<IUserPersist, UserPersist>();
 
             services.AddCors();
             services.AddSwaggerGen(c =>

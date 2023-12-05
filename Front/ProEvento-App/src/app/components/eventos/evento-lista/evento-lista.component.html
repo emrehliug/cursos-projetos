@@ -42,7 +42,7 @@
         <td class="d-none d-md-table-cell">
           <img
             [collapse]="exibirImagem" [isAnimated]="true"
-            src="/assets/{{item.imagemURL}}"
+            [src]="mostrarImagem(item.imagemURL)"
             [style.width.px]="widthImg"
             [style.margin.px]="marginImg"
           >

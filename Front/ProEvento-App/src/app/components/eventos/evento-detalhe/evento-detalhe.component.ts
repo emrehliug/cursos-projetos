@@ -9,7 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Lote } from '@app/models/Lote';
 import { LoteService } from '@app/service/lote.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
+import { environment } from '@environments/environment';
+
 
 @Component({
   selector: 'app-evento-detalhe',
@@ -80,6 +81,9 @@ export class EventoDetalheComponent implements OnInit {
         next: (evento: Evento) => {
           this.evento = {...evento};
           this.form.patchValue(this.evento);
+          if(this.evento.imagemURL != ''){
+            this.imagemURL = environment.apiURL + 'Resources/Images/' + this.evento.imagemURL;     
+          }
           this.carregarLotes();
         },
         error: (error: any) => {
@@ -119,7 +123,7 @@ export class EventoDetalheComponent implements OnInit {
       dataEvento : ['', Validators.required],
       tema : ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       qtdPessoas : ['', [Validators.required, Validators.maxLength(1200000)]],
-      imagemURL : ['', Validators.required],
+      imagemURL : [''],
       telefone : ['', Validators.required],
       email : ['', [Validators.required, Validators.email]],
       lotes: this.fb.array([])
